@@ -1,3 +1,7 @@
+<?php  
+ob_start();
+#ob_start — Turn on output buffering
+ ?>
 <?php include "../includes/db.php" ?>
 <!DOCTYPE html>
 
