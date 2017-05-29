@@ -7,7 +7,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">CMS Admin</a>
+        <a class="navbar-brand" href="index.php">CMS Admin</a>
     </div>
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
@@ -37,10 +37,11 @@
                 <a href="javascript:;" data-toggle="collapse" data-target="#posts_dropdown"><i class="fa fa-fw fa-arrows-v"></i> Objave <i class="fa fa-fw fa-caret-down"> </i></a>
                 <ul id="posts_dropdown" class="collapse">
                     <li>
-                        <a href="#">Vidi sve objave  </a>
+                        <a href="posts.php">Vidi sve objave  </a>
                     </li>
                     <li>
-                        <a href="#">Dodaj novu objavu</a>
+                        <a href="posts.php?source=add_post">Dodaj novu objavu</a>
+                        <!-- <a href="includes/add_post.php">Dodaj novu objavu</a>   -->
                     </li>
                 </ul>
             </li>
@@ -49,7 +50,7 @@
             </li>
             
             
-            <li class="active">
+            <li >
                 <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Komentari  </a>
             </li>
             <li>

@@ -21,7 +21,7 @@
                 <small>Secondary Text</small>
             </h1>
 
-            <!-- First Blog Post -->
+          
             <h2>
                 <a href="#"> <?php echo "$post_title" ?> </a>
             </h2>

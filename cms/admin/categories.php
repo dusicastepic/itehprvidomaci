@@ -21,27 +21,13 @@
           <div class="col-xs-6">
 
            <?php  
-           if (isset($_POST['submit'])) {
-            $cat_title=$_POST['cat_title'];
-            if ($cat_title=="" || empty($cat_title)) {
-              echo "Polje ne sme biti prazno";
-            }
-            else{
-
-                    $query="INSERT INTO categories(cat_title) VALUES('$cat_title')"; #ili '{$cat_title}' ili '".$cat_title."'
-                    $result=$mysqli->query($query);
-                    if (!$result) {
-                     die("UPIT SE NE MOZE IZVRSITI!" . $mysqli->error);
-                   }
-
-                 }
-               }
+         insertCategories();
                ?>
 
                <form action="" method="post">
                 <div class="form-group">
                   <label for="cat_title">Dodaj kategoriju</label>
-                  <input type="text" name="cat_title" class="form-control">
+                  <input type="text" name="cat_title" class="form-contraol">
                 </div>
                 <div class="form-group">
 
@@ -52,9 +38,9 @@
 
 
             
-
+                <!-- Za izmenu i include tj.ukljucivanje f-je update-->
             <?php if (isset($_GET['izmeni'])) {
-               $cat_id=$_GET['izmeni'];
+               $cat_id=$_GET['izmeni']; #preko key u post zahtevu dolazimo do value;
                include "includes/update_categories.php";
             } ?>
 </div> <!-- FORMA ZA DODAVANJE KATEGORIJE *** bootsrap class -6 columns xtra small, half of screen -->
@@ -72,31 +58,13 @@
                 </thead>
 
                 <tbody>
-                  <tr>
-                   <?php
-                   $query="SELECT * FROM categories";
-                   $result=$mysqli->query($query);
-                   while ($row=$result->fetch_assoc()) {
-                     $cat_id=$row['cat_id'];
-                     $cat_title=$row['cat_title'];
+                  
 
-                     ?>
-                     <td><?php echo($cat_id)?></td>
-                     <td><?php echo($cat_title)?></td>
-                     <?php echo "<td><a href='categories.php?obrisi={$cat_id}'>obriši</a></td>"; ?>
-                     <?php echo "<td><a href='categories.php?izmeni={$cat_id}'>izmeni</a></td>"; ?> <!-- key=izmeni, value={$cat_id} -->
-                   </tr>
-                   <?php  } ?>
+                 <?php findAllCategories(); ?>
+                   
                  </tbody>
                </table>       
-               <?php
-               if (isset($_GET['obrisi'])) {
-                $get_cat_id=$_GET['obrisi'];
-                $query="DELETE FROM categories WHERE cat_id={$get_cat_id}";
-                $mysqli->query($query); 
-                header("Location: categories.php");
-              }
-              ?>
+              <?php deleteCategories(); ?>
             </div>
           </div>
 

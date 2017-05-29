@@ -8,7 +8,7 @@
                                                   
                   if (isset($_GET['izmeni'])) {
                    $izmeni_cat_id=$_GET['izmeni'];
-                   $query="SELECT * FROM categories WHERE cat_id={$izmeni_cat_id}";
+                   $query="SELECT * FROM categories WHERE cat_id={$izmeni_cat_id} ORDER BY cat_id ASC";
                    $result=$mysqli->query($query);
                      
                    while($row=$result->fetch_assoc()){
