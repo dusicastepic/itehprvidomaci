@@ -14,7 +14,10 @@
                 <!-- Blog Entries Column -->
               <div class="col-md-8">
                 <?php 
-                $query="SELECT * from posts";
+                if (isset($_GET['category'])) {
+                    $category_id=$_GET['category'];
+                }
+                $query="SELECT * from posts where post_cat_id=$category_id";
                 $result=$mysqli->query($query);
 
                 while($row=$result->fetch_assoc()){
@@ -47,7 +50,7 @@
             <img class="img-responsive" src=images/<?php echo "$post_image" ?> alt="">
             <hr>
             <p> <?php echo "$post_content" ?> </p>
-            <a class="btn btn-primary" href="post.php?p_id=<?php echo $post_id; ?>"> Pročitaj više <span class="glyphicon glyphicon-chevron-right"></span></a>
+            <a class="btn btn-primary" href="#"> Pročitaj više <span class="glyphicon glyphicon-chevron-right"></span></a>
 
             <hr>
 

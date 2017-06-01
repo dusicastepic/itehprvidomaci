@@ -15,9 +15,17 @@
         <div class="col-lg-12">
           <h1 class="page-header">
           Dobrodošli u admin stranicu!
-                <small> Odeljak za objave </small>
+                <small> Odeljak za komentare </small>
 
-       </h1>
+
+
+
+
+
+
+
+
+          </h1>
       
    
   
@@ -38,11 +46,15 @@ switch ($source) {
     include "includes/add_post.php";
      break;
   
-  case 'edit_post':
-      include "includes/edit_post.php";
+
+  case 'a':
+    include "includes/view_all_comments.php";
+     break;
+  case 'edit_comments':
+      include "includes/edit_comments.php";
     break;
   default:
-   include "includes/view_all_posts.php";
+   include "includes/view_all_comments.php";
     break;
 }
 

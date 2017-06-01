@@ -51,7 +51,7 @@ if (isset($_GET['p_id'])) {
 	   	 $post_image=$row['post_image']; 
 	   }
    }
-
+       
 
                $query="UPDATE posts SET";
                $query .=" post_title='{$post_title}',";
@@ -95,10 +95,10 @@ if (isset($_GET['p_id'])) {
 
 	<div class="form-group">
 		<label for="post_category">ID Kategorije</label>
-		<select name="post_category" id="">
+		<select name="post_category" id="" value="">
 			 
 				<?php
-				$query="SELECT * FROM categories order by cat_title asc";
+				$query="SELECT * FROM categories";
                 $result=$mysqli->query($query);
                 confirm($result);
                    while($row=$result->fetch_assoc()){
@@ -107,7 +107,8 @@ if (isset($_GET['p_id'])) {
                     echo "<option value='$cat_id'> {$cat_title} </option>";  #Zaboraavila si value='$cat_id'!! 
                 }
                     ?>
-			 
+
+  
 		</select>
 	</div>
  

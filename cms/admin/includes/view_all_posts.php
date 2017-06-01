@@ -8,7 +8,6 @@
     <th>Id</th>
     <th>Naslov</th>
     <th>Autor</th>
-    <th>Status</th>
     <th>Kategorija</th>
     <th>Datum</th>
     <th>Sadržaj</th>
@@ -25,14 +24,13 @@
   </thead>
    
 <?php 
-   $query="SELECT * FROM posts ORDER BY post_id asc";
+   $query="SELECT * FROM posts ORDER BY post_date desc";
               $result=$mysqli->query($query);
               while ($row=$result->fetch_assoc()) {
 
                $post_id=$row['post_id'];
                $post_title=$row['post_title'];
                $post_author=$row['post_author'];
-               $post_status=$row['post_status'];
                $post_cat_id=$row['post_cat_id'];
                $post_date=$row['post_date'];
                $post_content=$row['post_content'];
@@ -41,32 +39,25 @@
                #$post_comment_count=$row['post_comment_count'];
             
 
- 
-
-
-
-
-    
-
     echo "<tr>";
     echo "<td>$post_id</td>";
     echo "<td>$post_title</td>";
     echo "<td>$post_author</td>";
-    echo "<td>$post_status</td>";
+ 
 
-     $query="SELECT * from categories WHERE cat_id=$post_cat_id";
+     $query="SELECT * from categories where cat_id=$post_cat_id";
     $res=$mysqli->query($query);
      while ($row=$res->fetch_assoc()) {
        $cat_id=$row['cat_id'];
        $cat_title=$row['cat_title'];
-     }
-
-    
       
 
+    }
+      
+$dat=date('d-m-Y H:i', strtotime($post_date));
 
-    echo "<td>{$cat_title}</td>";
-    echo "<td>$post_date</td>";
+    echo "<td>{$cat_title}</td>"; 
+    echo "<td> $dat </td>";
     echo "<td>$post_content</td>";
     echo " <td> <img class='img-responsive' src= '../images/$post_image'  alt='img' > </td>";  
     echo "<td>$post_tags</td>";
@@ -75,7 +66,7 @@
     #echo "<td>$post_comment_count</td>";
     echo "</tr>";
 
- 
+
 } ?>
           </table>
 

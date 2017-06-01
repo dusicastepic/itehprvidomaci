@@ -24,12 +24,13 @@
                 <ul class="list-unstyled">
 
                     <?php 
-                    $query="SELECT * from categories LIMIT 4";
+                    $query="SELECT * from categories LIMIT 10";
                     $result=$mysqli->query($query);
                     while ($row=$result->fetch_assoc()) {
+                        $cat_id=$row['cat_id']; 
                         $cat_title=$row['cat_title'];                               
                         ?>
-                        <li><a href="#"><?php echo "$cat_title"; ?> </a>
+                        <li><a href="categories.php?category=<?php echo $cat_id; ?>"><?php echo "$cat_title"; ?> </a>
                         </li>
 
                         <?php } ?>
